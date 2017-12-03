@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+
+        body {
+            background: #666;
+        }
+
+        .slider {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .slider .slider__step {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            cursor: pointer;
+        }
+
+        .slider .slider__main-bar {
+            height: 5px;
+            width: 5px;
+            background: #ccc;
+            transition: all .5s;
+        }
+
+        .slider .slider__step:first-of-type .slider__main-bar {
+            border-top-left-radius: 2px;
+            border-top-right-radius: 2px;
+        }
+
+        .slider .slider__step:last-of-type .slider__main-bar {
+            border-bottom-left-radius: 2px;
+            border-bottom-right-radius: 2px;
+        }
+
+        .slider .slider__small-bar {
+            height: 2px;
+            width: 10px;
+            background: #ccc;
+            margin-left: 3px;
+            border-radius: 2px;
+            transition: all .5s;
+        }
+
+        .slider .slider__step.slider__step--active .slider__main-bar {
+            background: red;
+        }
+
+        .slider .slider__step.slider__step--active .slider__small-bar {
+            background: red;
+        }
+
+        .slider .slider__step.slider__step--active.slider__step--first .slider__small-bar {
+            width: 17px;
+        }
+
+
+
+    </style>
+</head>
+<body>
+
+<div class="slider">
+    <div class="slider__step">
+        <div class="slider__main-bar"></div>
+        <div class="slider__small-bar"></div>
+    </div>
+    <div class="slider__step">
+        <div class="slider__main-bar"></div>
+        <div class="slider__small-bar"></div>
+    </div>
+    <div class="slider__step">
+        <div class="slider__main-bar"></div>
+        <div class="slider__small-bar"></div>
+    </div>
+    <div class="slider__step">
+        <div class="slider__main-bar"></div>
+        <div class="slider__small-bar"></div>
+    </div>
+    <div class="slider__step">
+        <div class="slider__main-bar"></div>
+        <div class="slider__small-bar"></div>
+    </div>
+    <div class="slider__step">
+        <div class="slider__main-bar"></div>
+        <div class="slider__small-bar"></div>
+    </div>
+    <div class="slider__step">
+        <div class="slider__main-bar"></div>
+        <div class="slider__small-bar"></div>
+    </div>
+    <div class="slider__step">
+        <div class="slider__main-bar"></div>
+        <div class="slider__small-bar"></div>
+    </div>
+    <div class="slider__step">
+        <div class="slider__main-bar"></div>
+        <div class="slider__small-bar"></div>
+    </div>
+    <div class="slider__step">
+        <div class="slider__main-bar"></div>
+        <div class="slider__small-bar"></div>
+    </div>
+    <div class="slider__step">
+        <div class="slider__main-bar"></div>
+        <div class="slider__small-bar"></div>
+    </div>
+    <div class="slider__step">
+        <div class="slider__main-bar"></div>
+        <div class="slider__small-bar"></div>
+    </div>
+    <div class="slider__step">
+        <div class="slider__main-bar"></div>
+        <div class="slider__small-bar"></div>
+    </div>
+    <div class="slider__step">
+        <div class="slider__main-bar"></div>
+        <div class="slider__small-bar"></div>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+
+<script>
+
+    var slider = $('.slider'),
+        steps = slider.find('.slider__step');
+
+    steps.on('click', function () {
+
+        var step = $(this);
+
+        steps.removeClass('slider__step--active slider__step--first');
+
+        step.addClass('slider__step--active slider__step--first');
+
+        step.nextAll().addClass('slider__step--active');
+
+	});
+
+
+</script>
+
+
+</body>
+</html>
