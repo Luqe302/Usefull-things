@@ -14,51 +14,87 @@
 
         .slider {
             display: flex;
-            flex-direction: column;
+            flex-direction: row;
+            position: relative;
+            padding-left: 27px;
         }
 
-        .slider .slider__step {
+        .slider .slider__cursor-wrapper {
+            position: absolute;
+            left: 0;
+            top: 100%;
+            transform: translateY(-50%);
+            transition: all .6s;
+        }
+
+        .slider .slider__cursor {
+            background: #d536d3;
+            width: 20px;
+            height: 20px;
+            transform: rotate(-45deg);
+            border-top-left-radius: 50%;
+            border-bottom-left-radius: 50%;
+            border-top-right-radius: 50%;
+            border: 1px solid white;
+            outline: 5px solid #666;
             display: flex;
-            flex-direction: row;
+            justify-content: center;
             align-items: center;
-            cursor: pointer;
+        }
+
+        .slider .slider__counter {
+            transform: rotate(45deg);
+            display: block;
+            color: white;
         }
 
         .slider .slider__main-bar {
-            height: 5px;
             width: 5px;
             background: #ccc;
             transition: all .5s;
+            position: relative;
         }
 
-        .slider .slider__step:first-of-type .slider__main-bar {
-            border-top-left-radius: 2px;
-            border-top-right-radius: 2px;
+        .slider .slider__main-inner-bar {
+            position: absolute;
+            left: 0;
+            height: 0;
+            width: 100%;
+            background: #d536d3;
+            transition: all .5s;
+            bottom: 0;
         }
 
-        .slider .slider__step:last-of-type .slider__main-bar {
-            border-bottom-left-radius: 2px;
-            border-bottom-right-radius: 2px;
+        .slider .slider__steps {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            cursor: pointer;
         }
 
         .slider .slider__small-bar {
             height: 2px;
             width: 10px;
-            background: #ccc;
             margin-left: 3px;
-            border-radius: 2px;
+            padding-bottom: 1.5px;
+            padding-top: 1.5px;
+        }
+
+        .slider .slider__small-inner {
+            background: #ccc;
+            height: 100%;
+            width: 100%;
             transition: all .5s;
+            border-radius: 2px;
+            display: block;
+
         }
 
-        .slider .slider__step.slider__step--active .slider__main-bar {
-            background: red;
+        .slider .slider__small-inner.slider__small-inner--active {
+            background: #d536d3;
         }
 
-        .slider .slider__step.slider__step--active .slider__small-bar {
-            background: red;
-        }
-
-        .slider .slider__step.slider__step--active.slider__step--first .slider__small-bar {
+        .slider .slider__small-inner.slider__small-inner--active.slider__small-inner--first {
             width: 17px;
         }
 
@@ -69,61 +105,54 @@
 <body>
 
 <div class="slider">
-    <div class="slider__step">
-        <div class="slider__main-bar"></div>
-        <div class="slider__small-bar"></div>
+    <div class="slider__cursor-wrapper">
+        <div class="slider__cursor">
+            <span class="slider__counter">0</span>
+        </div>
     </div>
-    <div class="slider__step">
-        <div class="slider__main-bar"></div>
-        <div class="slider__small-bar"></div>
+    <div class="slider__main-bar">
+        <div class="slider__main-inner-bar"></div>
     </div>
-    <div class="slider__step">
-        <div class="slider__main-bar"></div>
-        <div class="slider__small-bar"></div>
-    </div>
-    <div class="slider__step">
-        <div class="slider__main-bar"></div>
-        <div class="slider__small-bar"></div>
-    </div>
-    <div class="slider__step">
-        <div class="slider__main-bar"></div>
-        <div class="slider__small-bar"></div>
-    </div>
-    <div class="slider__step">
-        <div class="slider__main-bar"></div>
-        <div class="slider__small-bar"></div>
-    </div>
-    <div class="slider__step">
-        <div class="slider__main-bar"></div>
-        <div class="slider__small-bar"></div>
-    </div>
-    <div class="slider__step">
-        <div class="slider__main-bar"></div>
-        <div class="slider__small-bar"></div>
-    </div>
-    <div class="slider__step">
-        <div class="slider__main-bar"></div>
-        <div class="slider__small-bar"></div>
-    </div>
-    <div class="slider__step">
-        <div class="slider__main-bar"></div>
-        <div class="slider__small-bar"></div>
-    </div>
-    <div class="slider__step">
-        <div class="slider__main-bar"></div>
-        <div class="slider__small-bar"></div>
-    </div>
-    <div class="slider__step">
-        <div class="slider__main-bar"></div>
-        <div class="slider__small-bar"></div>
-    </div>
-    <div class="slider__step">
-        <div class="slider__main-bar"></div>
-        <div class="slider__small-bar"></div>
-    </div>
-    <div class="slider__step">
-        <div class="slider__main-bar"></div>
-        <div class="slider__small-bar"></div>
+    <div class="slider__steps">
+        <div class="slider__small-bar">
+            <span class="slider__small-inner"></span>
+        </div>
+        <div class="slider__small-bar">
+            <span class="slider__small-inner"></span>
+        </div>
+        <div class="slider__small-bar">
+            <span class="slider__small-inner"></span>
+        </div>
+        <div class="slider__small-bar">
+            <span class="slider__small-inner"></span>
+        </div>
+        <div class="slider__small-bar">
+            <span class="slider__small-inner"></span>
+        </div>
+        <div class="slider__small-bar">
+            <span class="slider__small-inner"></span>
+        </div>
+        <div class="slider__small-bar">
+            <span class="slider__small-inner"></span>
+        </div>
+        <div class="slider__small-bar">
+            <span class="slider__small-inner"></span>
+        </div>
+        <div class="slider__small-bar">
+            <span class="slider__small-inner"></span>
+        </div>
+        <div class="slider__small-bar">
+            <span class="slider__small-inner"></span>
+        </div>
+        <div class="slider__small-bar">
+            <span class="slider__small-inner"></span>
+        </div>
+        <div class="slider__small-bar">
+            <span class="slider__small-inner"></span>
+        </div>
+        <div class="slider__small-bar">
+            <span class="slider__small-inner slider__small-inner--active slider__small-inner--first"></span>
+        </div>
     </div>
 </div>
 
@@ -132,19 +161,37 @@
 <script>
 
     var slider = $('.slider'),
-        steps = slider.find('.slider__step');
+        steps = slider.find('.slider__small-bar'),
+        bar = slider.find('.slider__main-inner-bar'),
+        cursor = slider.find('.slider__cursor-wrapper'),
+        counter = slider.find('.slider__counter');
 
-    steps.on('click', function () {
+        bar.css('height', 1 / steps.length * 100 + '%');
 
-        var step = $(this);
+        steps.each(function(i, step) {
 
-        steps.removeClass('slider__step--active slider__step--first');
+            var percentageValue = i / steps.length * 100;
 
-        step.addClass('slider__step--active slider__step--first');
+            step = $(step);
 
-        step.nextAll().addClass('slider__step--active');
+            step.on('click', function() {
 
-	});
+                steps.find('.slider__small-inner').removeClass('slider__small-inner--active slider__small-inner--first');
+
+                step.find('.slider__small-inner').addClass('slider__small-inner--active slider__small-inner--first');
+
+                step.nextAll().find('.slider__small-inner').addClass('slider__small-inner--active');
+                console.log(step.nextAll().find('.slider__small-inner'));
+
+                counter.text(steps.length -1 - i);
+
+                cursor.css('top', percentageValue + '%');
+
+                bar.css('height', 100 - percentageValue + '%');
+
+            });
+
+        });
 
 
 </script>
