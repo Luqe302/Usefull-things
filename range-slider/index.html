@@ -1,192 +1,35 @@
 <!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-    <style>
+    <head>
+        <link rel="stylesheet" href="./css/styles.css">
+        <meta charset="UTF-8">
+        <meta name="viewport"
+              content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Document</title>
+    </head>
+    <body>
 
-        body {
-            background: #666;
-        }
-
-        .slider {
-            display: flex;
-            flex-direction: row;
-            position: relative;
-            padding-left: 27px;
-        }
-
-        .slider .slider__cursor-wrapper {
-            position: absolute;
-            left: 0;
-            top: 100%;
-            transform: translateY(-50%);
-            transition: all .6s;
-        }
-
-        .slider .slider__cursor {
-            background: #d536d3;
-            width: 20px;
-            height: 20px;
-            transform: rotate(-45deg);
-            border-top-left-radius: 50%;
-            border-bottom-left-radius: 50%;
-            border-top-right-radius: 50%;
-            border: 1px solid white;
-            outline: 5px solid #666;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .slider .slider__counter {
-            transform: rotate(45deg);
-            display: block;
-            color: white;
-        }
-
-        .slider .slider__main-bar {
-            width: 5px;
-            background: #ccc;
-            transition: all .5s;
-            position: relative;
-        }
-
-        .slider .slider__main-inner-bar {
-            position: absolute;
-            left: 0;
-            height: 0;
-            width: 100%;
-            background: #d536d3;
-            transition: all .5s;
-            bottom: 0;
-        }
-
-        .slider .slider__steps {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            cursor: pointer;
-        }
-
-        .slider .slider__small-bar {
-            height: 2px;
-            width: 10px;
-            margin-left: 3px;
-            padding-bottom: 1.5px;
-            padding-top: 1.5px;
-        }
-
-        .slider .slider__small-inner {
-            background: #ccc;
-            height: 100%;
-            width: 100%;
-            transition: all .5s;
-            border-radius: 2px;
-            display: block;
-
-        }
-
-        .slider .slider__small-inner.slider__small-inner--active {
-            background: #d536d3;
-        }
-
-        .slider .slider__small-inner.slider__small-inner--active.slider__small-inner--first {
-            width: 17px;
-        }
-
-
-
-    </style>
-</head>
-<body>
-
-<div class="slider">
-    <div class="slider__cursor-wrapper">
-        <div class="slider__cursor">
-            <span class="slider__counter">0</span>
+    <div class="slider">
+        <div class="slider__cursor-wrapper">
+            <div class="slider__cursor">
+                <span class="slider__counter">0</span>
+            </div>
+        </div>
+        <div class="slider__main-bar">
+            <div class="slider__main-inner-bar"></div>
+        </div>
+        <div class="slider__steps">
+            <div class="slider__small-bar">
+                <span class="slider__small-inner slider__small-inner--active slider__small-inner--first"></span>
+            </div>
         </div>
     </div>
-    <div class="slider__main-bar">
-        <div class="slider__main-inner-bar"></div>
-    </div>
-    <div class="slider__steps">
-        <div class="slider__small-bar">
-            <span class="slider__small-inner slider__small-inner--active slider__small-inner--first"></span>
-        </div>
-    </div>
-</div>
-
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
-
-<script>
 
 
-    var slider = $('.slider'),
-        bar = slider.find('.slider__main-inner-bar'),
-        cursor = slider.find('.slider__cursor-wrapper'),
-        counter = slider.find('.slider__counter');
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
 
+        <script src=./scripts/script.js></script>
 
-        var generateNewSlider = function(x) {
-
-            var stepsWrapper = slider.find('.slider__steps');
-
-            for (var i = 0; i < x; i++) {
-
-                var smallBar = $('<div class="slider__small-bar">');
-
-                for (var j = 0; j < 1; j++) {
-
-                    var smallInnerBar = $('<div class="slider__small-inner">');
-                    smallBar.append(smallInnerBar);
-
-                }
-
-                stepsWrapper.prepend(smallBar);
-
-            }
-
-        };
-
-        generateNewSlider(22);
-
-
-        var steps = slider.find('.slider__small-bar');
-
-        bar.css('height', 1 / steps.length * 100 + '%');
-
-        steps.each(function(i, step) {
-
-            var percentageValue = i / steps.length * 100;
-
-            step = $(step);
-
-            step.on('click', function() {
-
-                steps.find('.slider__small-inner').removeClass('slider__small-inner--active slider__small-inner--first');
-
-                step.find('.slider__small-inner').addClass('slider__small-inner--active slider__small-inner--first');
-
-                step.nextAll().find('.slider__small-inner').addClass('slider__small-inner--active');
-                console.log(step.nextAll().find('.slider__small-inner'));
-
-                counter.text(steps.length -1 - i);
-
-                cursor.css('top', percentageValue + '%');
-
-                bar.css('height', 100 - percentageValue + '%');
-
-            });
-
-        });
-
-
-</script>
-
-
-</body>
+    </body>
 </html>
