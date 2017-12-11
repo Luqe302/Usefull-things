@@ -1,0 +1,33 @@
+.button-wrapper {
+    background-color: #273a54;
+    height: 100px;
+    padding: 50px;
+}
+
+.button-wrapper button {
+    position: relative;
+    font-size: 16px;
+    color: #fff;
+    background-color: #7d6df9;
+    width: 145px;
+    height: 60px;
+    border: 3px solid #fff;
+    border-top-left-radius: 50px;
+    border-top-right-radius: 50px;
+    border-bottom-left-radius: 50px;
+    border-bottom-right-radius: 50px;
+}
+
+.button-wrapper button::before {
+    content: "";
+    position: relative;
+    width: 145px;
+    height: 60px;
+    background-color: red;
+    z-index: 5;
+
+}
+
+.button-wrapper button:hover {
+
+}
