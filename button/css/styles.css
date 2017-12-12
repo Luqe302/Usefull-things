@@ -5,10 +5,10 @@
 }
 
 .button-wrapper button {
-    position: relative;
     font-size: 16px;
     color: #fff;
     background-color: #7d6df9;
+    position: relative;
     width: 145px;
     height: 60px;
     border: 3px solid #fff;
@@ -16,18 +16,34 @@
     border-top-right-radius: 50px;
     border-bottom-left-radius: 50px;
     border-bottom-right-radius: 50px;
+    z-index: 0
 }
 
 .button-wrapper button::before {
     content: "";
-    position: relative;
-    width: 145px;
-    height: 60px;
-    background-color: red;
-    z-index: 5;
+    position: absolute;
+    display: block;
+    width: 139px;
+    height: 54px;
+    left: 142px;
+    bottom: 0px;
+    background-color: transparent;
+    border-top-left-radius: 50px;
+    border-top-right-radius: 50px;
+    border-bottom-left-radius: 50px;
+    border-bottom-right-radius: 50px;
+    transition: all .5s;
+    z-index: -1;
 
 }
 
 .button-wrapper button:hover {
+    background-color: transparent;
+
+}
+
+.button-wrapper button:hover:before {
+    left: 0px;
+    background-color: #2925e3;
 
 }
